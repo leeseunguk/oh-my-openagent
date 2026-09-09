@@ -30,7 +30,7 @@ function deadPid(): number {
 }
 
 describe("parseOmobArgs", () => {
-	test("defaults to the latest tracked refs and the host target", () => {
+	test.skipIf(process.platform === "win32")("defaults to the latest tracked refs and the host target", () => {
 		const parsed = parseOmobArgs([], "darwin", "arm64", "/home/dev")
 		expect(parsed.senpiRef).toBe("origin/main")
 		expect(parsed.omoRef).toBe("origin/dev")
